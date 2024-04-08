@@ -16,8 +16,8 @@ export class AuthService {
     return this.store.select(selectMyStates)
       .pipe(
         take(1),
-        map(({ MyString }) => {
-          if (MyString) {
+        map(({ country }) => {
+          if (country) {
             return true;
           }
           return this.router.parseUrl('');
