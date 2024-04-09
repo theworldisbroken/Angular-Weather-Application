@@ -12,11 +12,14 @@
     <main>
         <form class="form">
             <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Country" #input>
-                <label for="floatingInput">Country</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="City" list="cities" size="10"
+                    autocomplete="off" #input>
+                <label for="floatingInput">City</label>
             </div>
-            <button type="submit" class="btn btn-light"
-                (click)="handleCountryInput($event, input.value)">Search</button>
+            <datalist id="cities">
+                <option *ngFor="let city of citiesList" [value]="city">{{city}}</option>
+            </datalist>
+            <button type="submit" class="btn btn-light" (click)="handleCityInput($event, input.value)">Search</button>
         </form>
 
         <div class="currentWeather-container">

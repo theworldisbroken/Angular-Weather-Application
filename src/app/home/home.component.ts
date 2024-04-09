@@ -1,4 +1,4 @@
-import { Component, signal, computed, ViewChild, ElementRef } from '@angular/core';
+import { Component, signal, computed } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -6,8 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
 import { WeatherApiService } from '../weather/weather-api.service';
-
-
+import { CitiesService } from '../cities/cities.service';
 
 @Component({
   selector: 'app-home',
@@ -15,25 +14,26 @@ import { WeatherApiService } from '../weather/weather-api.service';
   imports: [RouterOutlet, RouterModule, CommonModule, HttpClientModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
-  providers: [WeatherApiService]
+  providers: [WeatherApiService, CitiesService]
 })
 export class HomeComponent {
 
-  constructor(private store: Store<any>, private weatherApiService: WeatherApiService) { }
-  @ViewChild('videoPlayer') videoPlayer!: ElementRef;
-  country: string = 'berlin';
+  constructor(private store: Store<any>, private weatherApiService: WeatherApiService, private cities: CitiesService) { }
+  citiesList: string[] = this.cities.bigCities;
+
+  city: string = 'berlin';
   currentWeather: any;
 
   ngOnInit() {
-    this.weatherApiService.getCurrentWeather(this.country).subscribe((weather: any) => {
+    this.weatherApiService.getCurrentWeather(this.city).subscribe((weather: any) => {
       this.currentWeather = weather;
     });
   }
 
-  handleCountryInput(event: Event, country: string) {
+  handleCityInput(event: Event, city: string) {
     event.preventDefault();
-    this.country = country;
-    this.weatherApiService.getCurrentWeather(this.country).subscribe((weather: any) => {
+    this.city = city;
+    this.weatherApiService.getCurrentWeather(this.city).subscribe((weather: any) => {
       this.currentWeather = weather;
     });
   }
