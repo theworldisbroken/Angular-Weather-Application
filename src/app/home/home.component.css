@@ -34,13 +34,14 @@ body {
 .currentWeather-text-container {
     display: flex;
     flex-direction: column;
-    margin-right: 3rem;
 }
 
 .currentWeather-icon {
     object-fit: cover;
-    width: 17rem;
+    width: 15rem;
     margin-bottom: 4rem;
+    margin-right: 2rem;
+    filter: brightness(115%);
 }
 
 .currentWeather-live-icon {
@@ -66,4 +67,9 @@ body {
     padding: 10px 12px;
     margin-top: 3rem;
     margin-left: 1rem;
+}
+
+.credits {
+    position: absolute;
+    bottom: 0;
 }

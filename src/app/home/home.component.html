@@ -25,8 +25,7 @@
         <div class="currentWeather-container">
             <!-- https://tenor.com/view/red-circle-liv-empty-background-live-gif-4352834058633484494 -->
             <img class="currentWeather-live-icon" alt="live-icon" src="../../assets/live.gif" />
-            <img class="currentWeather-icon" alt="current-Weather"
-                [src]="'https:' + weather.current.condition.icon" />
+            <img class="currentWeather-icon" alt="current-Weather" [src]="cureentWeatherImage" />
             <div class="currentWeather-text-container">
                 <h1>{{ weather.current.condition.text }}</h1>
                 <h1>{{ weather.current.temp_c}}&#8451;</h1>
@@ -34,4 +33,9 @@
         </div>
         <app-forecast-weather [forecastList]="weather.forecast.forecastday"></app-forecast-weather>
     </main>
+    <footer class="credits">
+        <a
+            href="https://www.freepik.com" target="_blank">Icon
+            by Freepik</a>
+    </footer>
 </body>
