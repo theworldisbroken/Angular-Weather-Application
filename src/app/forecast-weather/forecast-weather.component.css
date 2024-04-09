@@ -1,0 +1,36 @@
+.forecast-days-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    list-style-type: none;
+    gap: 1rem;
+    color: #fff;
+    margin-top: 4.5rem;
+}
+
+.dayWeather-icon {
+    width: 5.5rem;
+    object-fit: cover;
+}
+
+.forecast-day-container {
+    width: 13.5rem;
+    height: 14.5rem;
+    border-radius: 30px;
+    background: linear-gradient(156.8deg, rgb(30, 144, 231) 27.1%, rgb(67, 101, 225) 77.8%);
+
+}
+
+.forecast-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 0.5rem;
+}
+
+.forecast-tempretures-container h2 {
+    text-align: start;
+}

@@ -1,0 +1,12 @@
+<ul class="forecast-days-container">
+    <li class="forecast-day-container" *ngFor="let day of forecastList">
+        <img class="dayWeather-icon" alt="day-Weather" [src]="'https:' + day.day.condition.icon" />
+        <div class="forecast-text-container">
+            <h3>{{ getDayName(day.date, "en") }}</h3>
+            <div class="forecast-tempretures-container">
+                <h2>&#11205; {{ day.day.maxtemp_c}}&#8451;</h2>
+                <h2>&#11206; {{ day.day.mintemp_c}}&#8451;</h2>
+            </div>
+        </div>
+    </li>
+</ul>

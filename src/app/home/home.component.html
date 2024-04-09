@@ -12,7 +12,7 @@
     <main>
         <form class="form">
             <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="City" list="cities" size="10"
+                <input type="text" class="form-control" id="floatingInput" placeholder="City" list="cities"
                     autocomplete="off" #input>
                 <label for="floatingInput">City</label>
             </div>
@@ -26,11 +26,12 @@
             <!-- https://tenor.com/view/red-circle-liv-empty-background-live-gif-4352834058633484494 -->
             <img class="currentWeather-live-icon" alt="live-icon" src="../../assets/live.gif" />
             <img class="currentWeather-icon" alt="current-Weather"
-                [src]="'https:' + currentWeather.current.condition.icon" />
+                [src]="'https:' + weather.current.condition.icon" />
             <div class="currentWeather-text-container">
-                <h1>{{ currentWeather.current.condition.text }}</h1>
-                <h1>{{ currentWeather.current.temp_c}}&#8451;</h1>
+                <h1>{{ weather.current.condition.text }}</h1>
+                <h1>{{ weather.current.temp_c}}&#8451;</h1>
             </div>
         </div>
+        <app-forecast-weather [forecastList]="weather.forecast.forecastday"></app-forecast-weather>
     </main>
 </body>

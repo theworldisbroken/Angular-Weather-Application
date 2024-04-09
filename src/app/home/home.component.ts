@@ -7,11 +7,12 @@ import { Store } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
 import { WeatherApiService } from '../weather/weather-api.service';
 import { CitiesService } from '../cities/cities.service';
+import { ForecastWeatherComponent } from '../forecast-weather/forecast-weather.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, CommonModule, HttpClientModule],
+  imports: [RouterOutlet, RouterModule, CommonModule, HttpClientModule, ForecastWeatherComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   providers: [WeatherApiService, CitiesService]
@@ -22,11 +23,11 @@ export class HomeComponent {
   citiesList: string[] = this.cities.bigCities;
 
   city: string = 'berlin';
-  currentWeather: any;
+  weather: any;
 
   ngOnInit() {
     this.weatherApiService.getCurrentWeather(this.city).subscribe((weather: any) => {
-      this.currentWeather = weather;
+      this.weather = weather;
     });
   }
 
@@ -34,7 +35,7 @@ export class HomeComponent {
     event.preventDefault();
     this.city = city;
     this.weatherApiService.getCurrentWeather(this.city).subscribe((weather: any) => {
-      this.currentWeather = weather;
+      this.weather = weather;
     });
   }
 
