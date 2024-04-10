@@ -1,0 +1,62 @@
+.drop1,
+.drop {
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.drop1::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 10vh;
+    width: 100%;
+    top: -50%;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #bbbbbb 75%, #e4e3e3 100%);
+    animation: drop 4s infinite;
+    animation-fill-mode: forwards;
+}
+
+.drop1:nth-of-type(2n)::after {
+    animation-delay: 0.5s;
+}
+
+.drop1:nth-of-type(3n)::after {
+    animation-delay: 0.8s;
+}
+
+.drop::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 10vh;
+    width: 100%;
+    top: -20%;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #bbbbbb 75%, #ffffff 100%);
+    animation: drop 4s infinite;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+}
+
+.drop:nth-of-type(2n)::after {
+    animation-delay: 1.6s;
+}
+
+.drop:nth-of-type(3n)::after {
+    animation-delay: 1.3s;
+}
+
+@keyframes drop {
+    0% {
+        top: -50%;
+    }
+
+    100% {
+        top: 110%;
+    }
+}

@@ -8,28 +8,41 @@ import { CommonModule } from '@angular/common';
 import { WeatherApiService } from '../weather/weather-api.service';
 import { CitiesService } from '../cities/cities.service';
 import { ForecastWeatherComponent } from '../forecast-weather/forecast-weather.component';
+import { SnowflakesComponent } from '../snowflakes/snowflakes.component';
+import { RainComponent } from '../rain/rain.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, CommonModule, HttpClientModule, ForecastWeatherComponent],
+  imports: [RouterOutlet, RouterModule, CommonModule, HttpClientModule, ForecastWeatherComponent, SnowflakesComponent, RainComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   providers: [WeatherApiService, CitiesService]
 })
+
 export class HomeComponent {
 
-  constructor(private store: Store<any>, private weatherApiService: WeatherApiService, private cities: CitiesService) { }
-  citiesList: string[] = this.cities.bigCities;
-
+  constructor(private weatherApiService: WeatherApiService, private cities: CitiesService) { }
   weather: any;
+  citiesList: string[] = this.cities.bigCities;
   cureentWeatherImage = "";
-  city: string = 'berlin';
+  city: string = 'Berlin';
+
+  rainyWeather: boolean = false;
+  snowyWeather: boolean = false;
 
   ngOnInit() {
     this.weatherApiService.getCurrentWeather(this.city).subscribe((weather: any) => {
       this.weather = weather;
       this.updateWeatherImage();
+      if (this.weather.current.condition.text === "Patchy rain possible" || this.weather.current.condition.text === "Light rain" || this.weather.current.condition.text === "Moderate rain" || this.weather.current.condition.text === "Heavy rain at times" || this.weather.current.condition.text === "Light freezing rain" || this.weather.current.condition.text === "Torrential rain shower") {
+        this.rainyWeather = true;
+      } else if (this.weather.current.condition.text === "Heavy snow" || this.weather.current.condition.text === "Ice pellets" || this.weather.current.condition.text === "Light sleet showers") {
+        this.snowyWeather = true;
+      } else {
+        this.rainyWeather = false;
+        this.snowyWeather = false;
+      }
     });
   }
 
@@ -39,6 +52,14 @@ export class HomeComponent {
     this.weatherApiService.getCurrentWeather(this.city).subscribe((weather: any) => {
       this.weather = weather;
       this.updateWeatherImage();
+      if (this.weather.current.condition.text === "Patchy rain possible" || this.weather.current.condition.text === "Light rain" || this.weather.current.condition.text === "Moderate rain" || this.weather.current.condition.text === "Heavy rain at times" || this.weather.current.condition.text === "Light freezing rain" || this.weather.current.condition.text === "Torrential rain shower") {
+        this.rainyWeather = true;
+      } else if (this.weather.current.condition.text === "Heavy snow" || this.weather.current.condition.text === "Ice pellets" || this.weather.current.condition.text === "Light sleet showers") {
+        this.snowyWeather = true;
+      } else {
+        this.rainyWeather = false;
+        this.snowyWeather = false;
+      }
     });
   }
 
@@ -57,7 +78,7 @@ export class HomeComponent {
       } else if (this.weather.current.condition.text === "Patchy rain possible" || this.weather.current.condition.text === "Light rain" || this.weather.current.condition.text === "Moderate rain" || this.weather.current.condition.text === "Heavy rain at times" || this.weather.current.condition.text === "Light freezing rain" || this.weather.current.condition.text === "Torrential rain shower") {
         this.cureentWeatherImage = "../../assets/rain.png";
       } else if (this.weather.current.condition.text === "Heavy snow" || this.weather.current.condition.text === "Ice pellets" || this.weather.current.condition.text === "Light sleet showers") {
-        this.cureentWeatherImage = "../../assets/mist.png";
+        this.cureentWeatherImage = "../../assets/snowflakes.png";
       } else if (this.weather.current.condition.text === "Clear") {
         this.cureentWeatherImage = "../../assets/moon.png";
       } else {
