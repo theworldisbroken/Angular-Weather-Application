@@ -34,3 +34,10 @@
 .forecast-tempretures-container h2 {
     text-align: start;
 }
+
+@media screen and (max-width: 992px) {
+    .forecast-days-container{
+        flex-direction: column;
+        align-items: center;
+    }
+}

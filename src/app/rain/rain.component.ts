@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,5 +11,4 @@ import { CommonModule } from '@angular/common';
 
 export class RainComponent {
   rainArray: number[] = Array.from({ length: 50 }, (v, i) => i);
-  @Input() rainyWeather!: boolean;
 }

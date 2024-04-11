@@ -8,11 +8,23 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body
-    [ngStyle]="{ 'background': this.weather.current.is_day == 0 ? 'linear-gradient(56.8deg, rgb(45, 93, 133)27.1%, rgb(5, 5, 5) 70.8%)' : 'linear-gradient(156.8deg, rgb(51, 129, 189)27.1%, rgb(142, 152, 189) 77.8%)', 'min-height': '100vh' }">
+<body [ngClass]="this.weather.current.is_day == 0 ? 'nighttime' : 'daytime'">
+    <img *ngIf="this.weather.current.is_day == 0" class="night-moon"
+        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/moon2.png" alt="">
+    <div *ngIf="this.weather.current.is_day == 0" class="stars"></div>
+    <div *ngIf="cloudyWeather">
+        <app-clouds></app-clouds>
+    </div>
+    <div *ngIf="sunnyWeather">
+        <app-sunny-weather></app-sunny-weather>
+    </div>
+    <div *ngIf="rainyWeather">
+        <app-rain></app-rain>
+    </div>
+    <div *ngIf="snowyWeather">
+        <app-snowflakes></app-snowflakes>
+    </div>
     <main>
-        <app-rain [rainyWeather]="rainyWeather"></app-rain>
-        <app-snowflakes [snowyWeather]="snowyWeather"></app-snowflakes>
         <form class="form">
             <div class="form-floating">
                 <input type="text" class="form-control" id="floatingInput" placeholder="City" list="cities"
@@ -29,7 +41,7 @@
             <!-- https://tenor.com/view/red-circle-liv-empty-background-live-gif-4352834058633484494 -->
             <img class="currentWeather-live-icon" alt="live-icon" src="../../assets/live.gif" />
             <h4 class="currentWeather-city">{{weather.location.name}}</h4>
-            <img class="currentWeather-icon" alt="current-Weather" [src]="cureentWeatherImage" />
+                <img class="currentWeather-icon" alt="current-Weather" [src]="cureentWeatherImage" />
             <div class="currentWeather-text-container">
                 <h1>{{ weather.current.condition.text }}</h1>
                 <h1>{{ weather.current.temp_c}}&#8451;</h1>

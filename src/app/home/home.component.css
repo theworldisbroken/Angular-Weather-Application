@@ -1,5 +1,14 @@
 body {
     margin: 0;
+    min-height: 100vh;
+}
+
+.daytime {
+    background: linear-gradient(156.8deg, rgb(51, 129, 189)27.1%, rgb(142, 152, 189) 77.8%);
+}
+
+.nighttime {
+    background: linear-gradient(56.8deg, rgb(45, 93, 133)27.1%, rgb(5, 5, 5) 70.8%);
 }
 
 .currentWeather-container {
@@ -17,6 +26,7 @@ body {
     font-family: Andale Mono, monospace;
     background: linear-gradient(156.8deg, rgb(30, 144, 231) 27.1%, rgb(67, 101, 225) 77.8%);
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
 .currentWeather-text-container h1 {
@@ -71,9 +81,66 @@ body {
     padding: 10px 12px;
     margin-top: 3rem;
     margin-left: 1rem;
+    z-index: 1;
 }
 
-.credits {
+.night-moon {
+    height: 10rem;
+    width: 10rem;
     position: absolute;
+    z-index: 3;
+    right: 30px;
+    top: 20px;
+    animation: glanz 6s ease infinite;
+}
+
+.stars {
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
+    position: absolute;
+    top: 0;
     bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    z-index: 0;
+}
+
+@keyframes glanz {
+
+    0%,
+    100% {
+        filter: brightness(80%);
+    }
+
+    50% {
+        filter: brightness(140%);
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .forecast-days-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .currentWeather-container {
+        max-width: 90%;
+    }
+
+    .currentWeather-text-container h1,
+    .currentWeather-text-container h1:nth-child(2) {
+        font-size: 55px;
+        text-align: center;
+    }
+
+    .currentWeather-icon {
+        width: 8rem;
+        margin-bottom: 1rem;
+        margin-left: 2rem;
+    }
+
+    .night-moon{
+        display: none;
+    }
 }
