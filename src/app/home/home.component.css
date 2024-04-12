@@ -4,11 +4,11 @@ body {
 }
 
 .daytime {
-    background: linear-gradient(156.8deg, rgb(51, 129, 189)27.1%, rgb(142, 152, 189) 77.8%);
+    background: linear-gradient(156.8deg, rgb(51, 129, 189) 27.1%, rgb(142, 152, 189) 77.8%);
 }
 
 .nighttime {
-    background: linear-gradient(56.8deg, rgb(45, 93, 133)27.1%, rgb(5, 5, 5) 70.8%);
+    background: linear-gradient(56.8deg, rgb(45, 93, 133) 27.1%, rgb(5, 5, 5) 70.8%);
 }
 
 .currentWeather-container {
@@ -84,6 +84,11 @@ body {
     z-index: 1;
 }
 
+.credits{
+    position: relative;
+    top: 1.7rem;
+}
+
 .night-moon {
     height: 10rem;
     width: 10rem;
@@ -117,7 +122,7 @@ body {
     }
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1044px) {
     .forecast-days-container {
         flex-direction: column;
         align-items: center;
@@ -142,5 +147,9 @@ body {
 
     .night-moon{
         display: none;
+    }
+
+    .credits{
+        top: 0;
     }
 }
