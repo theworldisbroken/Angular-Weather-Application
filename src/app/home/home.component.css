@@ -153,3 +153,16 @@ body {
         top: 0;
     }
 }
+
+@media screen and (max-width: 420px) {
+    .currentWeather-text-container h1,
+    .currentWeather-text-container h1:nth-child(2) {
+        font-size: 38px;
+        text-align: center;
+    }
+
+    .form{
+        width: 95%;
+        margin: auto;
+    }
+}

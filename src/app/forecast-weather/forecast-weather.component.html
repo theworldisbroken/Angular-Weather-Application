@@ -4,8 +4,14 @@
         <div class="forecast-text-container">
             <h3>{{ getDayName(day.date, "en") }}</h3>
             <div class="forecast-tempretures-container">
-                <h2>&#11205; {{ day.day.maxtemp_c}}&#8451;</h2>
-                <h2>&#11206; {{ day.day.mintemp_c}}&#8451;</h2>
+                <div class="degree-container">
+                    <img src="assets/up.png" alt="" />
+                    <h2>{{ day.day.maxtemp_c}}&#8451;</h2>
+                </div>
+                <div class="degree-container">
+                    <img src="assets/down.png" alt="" />
+                    <h2>{{ day.day.mintemp_c}}&#8451;</h2>
+                </div>
             </div>
         </div>
     </li>
