@@ -8,6 +8,15 @@
     color: #fff;
     margin-top: 4.5rem;
     position: relative;
+    cursor: pointer;
+}
+
+.forecast-day-container:hover{
+    border: 2px solid #fff;
+}
+
+.selected {
+    outline: 3px solid white;
 }
 
 .dayWeather-icon {
@@ -114,6 +123,10 @@
     z-index: 2;
 }
 
+.scroll-btn:hover{
+    border: 2px solid #fff;
+}
+
 .left {
     left: 0;
 }
@@ -124,10 +137,6 @@
 
 .hide {
     display: none;
-}
-
-.selected {
-    outline: 3px solid white;
 }
 
 .hour-img {
