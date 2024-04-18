@@ -1,10 +1,11 @@
 .drop1,
 .drop {
-    position: absolute;
+    position: fixed;
     width: 2px;
     height: 100%;
     top: 0;
     left: 0;
+    bottom: 0;
     overflow: hidden;
 }
 
@@ -57,6 +58,6 @@
     }
 
     100% {
-        top: 110%;
+        top: 100%;
     }
 }

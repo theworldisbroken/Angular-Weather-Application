@@ -34,12 +34,19 @@ export class HomeComponent {
   sunnyWeather: boolean = false;
   cloudyWeather: boolean = false;
 
+  item: boolean = false;
+
+  addItem(newItem: boolean) {
+    this.item = newItem;
+  }
+
   ngOnInit() {
     this.weatherApiService.getCurrentWeather(this.city).subscribe((weather: any) => {
       this.weather = weather;
       this.updateWeatherImage();
       this.handleWeather(this.weather.current.condition.text);
     });
+    console.log(this.item)
   }
 
   handleCityInput(event: Event, city: string) {

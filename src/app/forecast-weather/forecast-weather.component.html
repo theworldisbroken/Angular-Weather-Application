@@ -1,5 +1,6 @@
 <ul class="forecast-days-container">
-    <li class="forecast-day-container" *ngFor="let day of forecastList">
+    <li class="forecast-day-container" *ngFor="let day of forecastList; let i = index"
+        (click)="setDayHours($event, day.hour); setSelectedIndex(i);" [ngClass]="{ 'selected': selectedIndex === i }">
         <img class="dayWeather-icon" alt="day-Weather" [src]="'https:' + day.day.condition.icon" />
         <div class="forecast-text-container">
             <h3>{{ getDayName(day.date, "en") }}</h3>
@@ -15,4 +16,23 @@
             </div>
         </div>
     </li>
+</ul>
+<br>
+<div style="display: flex">
+    <h2 class="hourlyForecast-headline">Hourly forecast</h2>
+</div>
+<ul class="forecast-hours-container">
+    <button class="scroll-btn left" (click)="scroll('left')">&lt;</button>
+    <button class="scroll-btn right" (click)="scroll('right')">&gt;</button>
+    <div class="hours-container" #hoursContainer>
+        <ng-container *ngFor="let hour of hourlyWeather">
+            <li *ngIf="findStartingHour(hour.time)">
+                <div class="hour-container">
+                    <h4>{{ getHour(hour.time) }}:00</h4>
+                    <img [src]="'https:' + hour.condition.icon" alt="" class="hour-img" />
+                    <h4>{{ hour.temp_c }}&#8451;</h4>
+                </div>
+            </li>
+        </ng-container>
+    </div>
 </ul>

@@ -7,6 +7,7 @@
     gap: 1rem;
     color: #fff;
     margin-top: 4.5rem;
+    position: relative;
 }
 
 .dayWeather-icon {
@@ -19,6 +20,7 @@
     height: 14.5rem;
     border-radius: 30px;
     background: linear-gradient(156.8deg, rgb(30, 144, 231) 27.1%, rgb(67, 101, 225) 77.8%);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
     z-index: 3;
 }
 
@@ -52,6 +54,86 @@
     bottom: 0.4rem;
 }
 
+/* forecast Hours */
+.hourlyForecast-headline {
+    margin: auto;
+    color: #fff;
+}
+
+.forecast-hours-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 80rem;
+    max-height: 50rem;
+    position: relative;
+    margin: auto;
+    margin-top: 2.2rem;
+    background: transparent;
+    overflow-x: hidden;
+}
+
+.hours-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+    list-style-type: none;
+    text-align: center;
+    margin: auto;
+    margin-left: 2rem;
+    margin-right: 3.3rem;
+    overflow-x: hidden;
+}
+
+.hour-container {
+    color: #fff;
+    height: 11rem;
+    min-width: 8.5rem;
+    background: linear-gradient(156.8deg, rgb(30, 144, 231) 27.1%, rgb(67, 101, 225) 77.8%);
+    border-radius: 15px;
+}
+
+.hour-container * {
+    position: relative;
+    top: 1rem;
+}
+
+.scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 60px;
+    border-radius: 10px;
+    background: linear-gradient(156.8deg, rgb(30, 144, 231) 27.1%, rgb(67, 101, 225) 77.8%);
+    color: white;
+    border: none;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.hide {
+    display: none;
+}
+
+.selected {
+    outline: 3px solid white;
+}
+
+.hour-img {
+    filter: brightness(150%);
+}
+
 @media screen and (max-width: 1044px) {
     .forecast-days-container {
         flex-direction: column;
@@ -61,5 +143,9 @@
     .degree-container img {
         width: 1.3rem;
         height: 1.1rem;
+    }
+
+    .hours-container {
+        flex-direction: column;
     }
 }
