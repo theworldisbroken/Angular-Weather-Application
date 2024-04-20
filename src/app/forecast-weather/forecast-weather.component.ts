@@ -55,7 +55,7 @@ export class ForecastWeatherComponent {
     const currentDate = new Date();
     const buttons = document.querySelectorAll('.scroll-btn') as NodeListOf<HTMLElement>;
     if ((hourDateObj.getHours() >= currentDate.getHours()) && hourDateObj.getDate() == currentDate.getDate()) {
-      if (hourDateObj.getHours() >= 17) {
+      if (currentDate.getHours() >= 17) {
         buttons.forEach(button => button.style.display = 'none');
       } else {
         buttons.forEach(button => button.style.display = 'block');
