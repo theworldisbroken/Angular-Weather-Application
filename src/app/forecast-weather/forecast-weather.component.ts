@@ -1,5 +1,6 @@
 import { Component, Input, ElementRef, ViewChild, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-forecast-weather',
@@ -13,6 +14,8 @@ export class ForecastWeatherComponent {
   @Input() forecastList: any;
   hourlyWeather: any;
   @ViewChild('hoursContainer') hoursContainer!: ElementRef;
+
+  constructor(private mediaMatcher: MediaMatcher) { }
 
   selectedIndex: number | null = 0;
   showHourContainerButtons: boolean = false;
@@ -54,20 +57,25 @@ export class ForecastWeatherComponent {
     const hourDateObj = new Date(date);
     const currentDate = new Date();
     const buttons = document.querySelectorAll('.scroll-btn') as NodeListOf<HTMLElement>;
-    if ((hourDateObj.getHours() >= currentDate.getHours()) && hourDateObj.getDate() == currentDate.getDate()) {
-      if (currentDate.getHours() >= 17) {
-        buttons.forEach(button => button.style.display = 'none');
-      } else {
-        buttons.forEach(button => button.style.display = 'block');
-      }
-      return true;
+    if (this.mediaMatcher.matchMedia('(max-width: 1044px)')) {
+      buttons.forEach(button => button.style.display = 'none');
     } else {
-      if (hourDateObj.getDate() != currentDate.getDate()) {
-        buttons.forEach(button => button.style.display = 'block');
+      if (((hourDateObj.getHours() >= currentDate.getHours()) && hourDateObj.getDate() == currentDate.getDate())) {
+        if (currentDate.getHours() >= 17) {
+          buttons.forEach(button => button.style.display = 'none');
+        } else {
+          buttons.forEach(button => button.style.display = 'block');
+        }
         return true;
+      } else {
+        if ((hourDateObj.getDate() != currentDate.getDate())) {
+          buttons.forEach(button => button.style.display = 'block');
+          return true;
+        }
+        return false;
       }
-      return false;
     }
+    return true;
   }
 
   scroll(direction: 'left' | 'right') {
