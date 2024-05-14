@@ -57,7 +57,7 @@ export class ForecastWeatherComponent {
     const hourDateObj = new Date(date);
     const currentDate = new Date();
     const buttons = document.querySelectorAll('.scroll-btn') as NodeListOf<HTMLElement>;
-    if (this.mediaMatcher.matchMedia('(max-width: 1044px)')) {
+    if (this.mediaMatcher.matchMedia('(max-width: 1044px)').matches) {
       buttons.forEach(button => button.style.display = 'none');
     } else {
       if (((hourDateObj.getHours() >= currentDate.getHours()) && hourDateObj.getDate() == currentDate.getDate())) {
